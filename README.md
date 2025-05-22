@@ -65,6 +65,10 @@ Technologies used:
 
 ### 📌 Explanations:
 - **Table Creation**: The system defines normalized tables for `Voters`, `Elections`, `Candidates`, `Votes`, and `Results`.
+- ![Voters Table](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20V/VOTERS.PNG?raw=true)
+![Candidates Table](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20V/candidates.PNG?raw=true)
+![Elections Table](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20V/elections.PNG?raw=true)
+
 - **Procedure Execution**: `cast_vote` ensures that voters are eligible and haven't already voted before inserting a record.
 - **Triggers**: Prevent voting after deadlines and duplicate voting.
 - **Audit Logging**: A separate `Vote_Audit` table captures voter actions, improving transparency and traceability.
