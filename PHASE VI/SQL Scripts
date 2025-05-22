@@ -1,0 +1,74 @@
+Create a Sequence for Auto-Generating Vote IDs
+----------------------------------------------
+CREATE SEQUENCE Votes_seq
+START WITH 1003
+INCREMENT BY 1
+NOCACHE;
+
+Procedure to Cast a Vote
+------------------------
+CREATE OR REPLACE PROCEDURE cast_vote (
+    p_voter_id      IN INT,
+    p_candidate_id  IN INT,
+    p_election_id   IN INT
+) IS
+    v_eligible CHAR(1);
+    v_already_voted NUMBER := 0;
+BEGIN
+    -- Check if voter exists and is eligible
+    SELECT Eligibility_Status INTO v_eligible
+    FROM Voters
+    WHERE Voter_ID = p_voter_id;
+
+    IF v_eligible != 'Y' THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Voter is not eligible to vote.');
+    END IF;
+
+    -- Check if voter has already voted in this election
+    SELECT COUNT(*) INTO v_already_voted
+    FROM Votes
+    WHERE Voter_ID = p_voter_id AND Election_ID = p_election_id;
+
+    IF v_already_voted > 0 THEN
+        RAISE_APPLICATION_ERROR(-20002, 'Voter has already voted in this election.');
+    END IF;
+
+    -- Insert the vote
+    INSERT INTO Votes (Vote_ID, Voter_ID, Candidate_ID, Election_ID, Timestamp)
+    VALUES (Votes_seq.NEXTVAL, p_voter_id, p_candidate_id, p_election_id, SYSTIMESTAMP);
+
+    DBMS_OUTPUT.PUT_LINE('Vote successfully cast.');
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RAISE_APPLICATION_ERROR(-20003, 'Voter not found.');
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+END;
+/
+
+Function to Count Votes for a Candidate
+---------------------------------------
+CREATE OR REPLACE FUNCTION count_votes (
+    p_candidate_id IN INT,
+    p_election_id  IN INT
+) RETURN INT IS
+    v_count INT;
+BEGIN
+    SELECT COUNT(*) INTO v_count
+    FROM Votes
+    WHERE Candidate_ID = p_candidate_id AND Election_ID = p_election_id;
+
+    RETURN v_count;
+END;
+/
+
+Test the Procedure and Function
+-------------------------------
+-- Turn on output
+SET SERVEROUTPUT ON;
+
+-- Test procedure: cast a new vote
+EXEC cast_vote(11, 102, 11);
+
+-- Test function: count votes for a candidate
+SELECT count_votes(102, 11) AS total_votes FROM dual;
