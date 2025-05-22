@@ -1,0 +1,70 @@
+TABLES CREATION
+----------------
+VOTERS TABLE
+CREATE TABLE Voters (
+    Voter_ID INT PRIMARY KEY,
+    Full_Name VARCHAR2(100),
+    National_ID VARCHAR2(50) UNIQUE,
+    Eligibility_Status CHAR(1) CHECK (Eligibility_Status IN ('Y', 'N')) NOT NULL
+);
+
+ ELECTIONS TABLE
+CREATE TABLE Elections (
+    Election_ID INT PRIMARY KEY,
+    Election_Type VARCHAR2(50),
+    Date DATE NOT NULL,
+    Status VARCHAR2(20) CHECK (Status IN ('Upcoming', 'Ongoing', 'Closed'))
+);
+
+ CANDIDATES TABLE
+CREATE TABLE Candidates (
+    Candidate_ID INT PRIMARY KEY,
+    Full_Name VARCHAR2(100),
+    Party VARCHAR2(50),
+    Election_ID INT,
+    FOREIGN KEY (Election_ID) REFERENCES Elections(Election_ID)
+);
+
+ VOTES TABLE
+CREATE TABLE Votes (
+    Vote_ID INT PRIMARY KEY,
+    Voter_ID INT,
+    Candidate_ID INT,
+    Election_ID INT,
+    Timestamp TIMESTAMP,
+    FOREIGN KEY (Voter_ID) REFERENCES Voters(Voter_ID),
+    FOREIGN KEY (Candidate_ID) REFERENCES Candidates(Candidate_ID),
+    FOREIGN KEY (Election_ID) REFERENCES Elections(Election_ID)
+);
+
+ RESULTS TABLE
+CREATE TABLE Results (
+    Result_ID INT PRIMARY KEY,
+    Candidate_ID INT,
+    Election_ID INT,
+    Total_Votes INT,
+    FOREIGN KEY (Candidate_ID) REFERENCES Candidates(Candidate_ID),
+    FOREIGN KEY (Election_ID) REFERENCES Elections(Election_ID)
+);
+
+
+SAMPLE DATA INSERTION
+---------------------
+ VOTERS
+INSERT INTO Voters VALUES (1, 'Alice Mukamana', '120987654321', 'Y');
+INSERT INTO Voters VALUES (2, 'Eric Niyonzima', '120123456789', 'Y');
+
+ ELECTIONS
+INSERT INTO Elections VALUES (1, 'Presidential', TO_DATE('2025-08-01', 'YYYY-MM-DD'), 'Upcoming');
+
+ CANDIDATES
+INSERT INTO Candidates VALUES (1, 'John Doe', 'Unity Party', 1);
+INSERT INTO Candidates VALUES (2, 'Jane Smith', 'Progress Party', 1);
+
+ VOTES
+INSERT INTO Votes VALUES (1, 1, 1, 1, SYSTIMESTAMP);
+INSERT INTO Votes VALUES (2, 2, 2, 1, SYSTIMESTAMP);
+
+ RESULTS
+INSERT INTO Results VALUES (1, 1, 1, 1500);
+INSERT INTO Results VALUES (2, 2, 1, 1320);
