@@ -16,7 +16,7 @@ This project proposes a **Digital Voting and Election Management System** develo
 - Real-time result tracking
 - Secure audit logging and rule enforcement
 
----
+
 
 ## ⚙️ Methodology
 
@@ -36,22 +36,23 @@ Technologies used:
 - PL/SQL (Procedures, Functions, Triggers)
 - GitHub for code management
 
----
+
 
 ## 🔷 UML/BPMN Diagrams
+ 🔷 BPMN Diagram
 
-> 📎 **Insert your BPMN diagram image here**
->   
+![Voting BPMN](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20II/BPMN.PNG?raw=true)
+  
 > 📝 *This diagram models the business process flow: voter registration, candidate setup, voting action, and result tracking. Swimlanes include voters, system, and admin roles.*
 
----
+
 
 ## 🔷 Entity Relationship Diagram (ERD)
 
 > 📎 **Insert your ERD diagram image here**  
 > 📝 *This ER diagram shows the core relationships between voters, elections, candidates, votes, and results. It enforces data integrity via foreign keys and constraints.*
 
----
+
 
 ## 🧪 Screenshots and Explanations
 
@@ -68,7 +69,7 @@ Technologies used:
 - **Triggers**: Prevent voting after deadlines and duplicate voting.
 - **Audit Logging**: A separate `Vote_Audit` table captures voter actions, improving transparency and traceability.
 
----
+
 
 ## ✅ Project Outcomes
 
@@ -78,7 +79,7 @@ Technologies used:
 - Enforced time-based voting restrictions
 - Provided a clear and testable PL/SQL implementation
 
----
+
 
 ## 🙌 Author
 
@@ -87,5 +88,5 @@ Technologies used:
 - **Project Phase**: PL/SQL Capstone  
 - **GitHub Repo**: [your-repo-link-here]
 
----
+
 
