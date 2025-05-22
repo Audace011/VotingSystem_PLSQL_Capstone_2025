@@ -49,7 +49,7 @@ Technologies used:
 
 ## 🔷 Entity Relationship Diagram (ERD)
 
-> 📎 **Insert your ERD diagram image here**  
+> ![Voting System ERD](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20III/ERD.PNG?raw=true)  
 > 📝 *This ER diagram shows the core relationships between voters, elections, candidates, votes, and results. It enforces data integrity via foreign keys and constraints.*
 
 
