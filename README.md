@@ -39,7 +39,7 @@ Technologies used:
 
 
 ## 🔷 UML/BPMN Diagrams
- 🔷 BPMN Diagram
+ -🔷 BPMN Diagram
 
 ![Voting BPMN](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20II/BPMN.PNG?raw=true)
   
@@ -48,8 +48,9 @@ Technologies used:
 
 ## 🔷 Entity Relationship Diagram (ERD)
 
-> ![Voting System ERD](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20III/ERD.PNG?raw=true)  
-> 📝 *This ER diagram shows the core relationships between voters, elections, candidates, votes, and results. It enforces data integrity via foreign keys and constraints.*
+>- ![Voting System ERD](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20III/ERD.PNG?raw=true)  
+> 
+> - 📝 *This ER diagram shows the core relationships between voters, elections, candidates, votes, and results. It enforces data integrity via foreign keys and constraints.*
 
 
 ## 🧪 Screenshots and Explanations
@@ -61,6 +62,8 @@ Technologies used:
 ![Candidates Table](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20V/candidates.PNG?raw=true)
 ![Elections Table](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20V/elections.PNG?raw=true)
 ![Candidates Insert Script](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20V/candidates%20ins.PNG?raw=true)
+
+
 - **Procedure Execution**: `cast_vote` ensures that voters are eligible and haven't already voted before inserting a record.
 🔧 Procedure: `cast_vote` Creation
 
@@ -69,6 +72,7 @@ Technologies used:
 
 ![Procedure Execution](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20VI/prcedure%20calling.PNG?raw=true)
 
+
 - **Triggers**: Prevent voting after deadlines and duplicate voting.
 - ⛔ Trigger: Prevent Voting After Deadline
 
@@ -76,7 +80,7 @@ Technologies used:
 
 📝 *This trigger enforces election deadlines by preventing any vote from being cast after the official election date. It raises a custom error if the system date is past the election date.*
 
- 🔄 Trigger: Prevent Duplicate Voting
+- 🔄 Trigger: Prevent Duplicate Voting
 
 ![Trigger – Duplicate Voting](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20VII/trg%20double%20voting%20creation.PNG?raw=true)
 
