@@ -78,6 +78,18 @@ Technologies used:
 ![Procedure Execution](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20VI/prcedure%20calling.PNG?raw=true)
 
 - **Triggers**: Prevent voting after deadlines and duplicate voting.
+- ⛔ Trigger: Prevent Voting After Deadline
+
+![Trigger – After Deadline](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20VII/trg%20after%20deadline%20creation.PNG?raw=true)
+
+📝 *This trigger enforces election deadlines by preventing any vote from being cast after the official election date. It raises a custom error if the system date is past the election date.*
+
+ 🔄 Trigger: Prevent Duplicate Voting
+
+![Trigger – Duplicate Voting](https://github.com/Audace011/VotingSystem_PLSQL_Capstone_2025/blob/main/PHASE%20VII/trg%20double%20voting%20creation.PNG?raw=true)
+
+📝 *This trigger checks if the voter has already voted in the same election. If a duplicate vote attempt is detected, it raises an application error to block the action and preserve vote integrity.*
+
 - **Audit Logging**: A separate `Vote_Audit` table captures voter actions, improving transparency and traceability.
 
 
